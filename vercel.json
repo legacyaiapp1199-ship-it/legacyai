@@ -2,22 +2,5 @@
   "buildCommand": "pnpm install && pnpm run build",
   "outputDirectory": "dist",
   "devCommand": "pnpm run dev",
-  "framework": null,
-  "regions": ["iad1"],
-  "functions": {
-    "server/_core/index.ts": {
-      "runtime": "nodejs20.x",
-      "maxDuration": 60
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": null
 }
