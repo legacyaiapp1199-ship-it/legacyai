@@ -247,6 +247,91 @@ export default function App() {
   </div>
 
 </section>
+      {/* Testimonials */}
+<section className="max-w-6xl mx-auto px-6 py-24">
+
+  <div className="text-center mb-16">
+    <h2 className="text-5xl md:text-6xl font-bold mb-6">
+      Loved By Families
+    </h2>
+
+    <p className="text-gray-400 text-xl">
+      People are preserving their legacy with LegacyAI.
+    </p>
+  </div>
+
+  <div className="grid md:grid-cols-3 gap-8">
+
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+      <p className="text-gray-300 leading-relaxed mb-6">
+        “LegacyAI helped me preserve my father's voice forever.
+        It feels magical.”
+      </p>
+
+      <div>
+        <h4 className="font-bold">Sarah Mitchell</h4>
+        <p className="text-gray-500 text-sm">
+          New York
+        </p>
+      </div>
+    </div>
+
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+      <p className="text-gray-300 leading-relaxed mb-6">
+        “I recorded my life stories for my future grandchildren.
+        Incredible experience.”
+      </p>
+
+      <div>
+        <h4 className="font-bold">Michael Lee</h4>
+        <p className="text-gray-500 text-sm">
+          Toronto
+        </p>
+      </div>
+    </div>
+
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-xl">
+      <p className="text-gray-300 leading-relaxed mb-6">
+        “This feels like the future of memory preservation and AI.”
+      </p>
+
+      <div>
+        <h4 className="font-bold">Emma Rodriguez</h4>
+        <p className="text-gray-500 text-sm">
+          California
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+{/* Footer */}
+<footer className="border-t border-white/10 mt-20">
+
+  <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+
+    <div>
+      <h3 className="text-2xl font-bold text-purple-400">
+        LegacyAI
+      </h3>
+
+      <p className="text-gray-500 mt-2">
+        Preserve your memories forever.
+      </p>
+    </div>
+
+    <div className="flex gap-6 text-gray-400">
+      <a href="#">About</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+    </div>
+
+  </div>
+
+</footer>
     </div>
   )
 }
