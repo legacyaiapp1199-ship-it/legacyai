@@ -1,3 +1,6 @@
+600 hover:bg-purple-700 transition"
+>
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
