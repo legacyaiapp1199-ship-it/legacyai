@@ -1,3 +1,6 @@
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 export default function App() {
   return (
     <div className="bg-[#050816] text-white min-h-screen overflow-hidden relative">
