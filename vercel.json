@@ -1,16 +1,9 @@
 {
   "buildCommand": "pnpm install && pnpm run build",
-  "outputDirectory": ".",
+  "outputDirectory": "dist",
   "devCommand": "pnpm run dev",
   "framework": null,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ]
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
