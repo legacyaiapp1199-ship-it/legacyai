@@ -1,10 +1,40 @@
 import { useEffect, useState } from "react";
 
+import { initializeApp } from "firebase/app";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "PUT_YOUR_API_KEY",
+  authDomain: "PUT_YOUR_AUTH_DOMAIN",
+  projectId: "PUT_YOUR_PROJECT_ID",
+  storageBucket: "PUT_YOUR_STORAGE_BUCKET",
+  messagingSenderId: "PUT_YOUR_MESSAGING_SENDER_ID",
+  appId: "PUT_YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
 export default function App() {
 
   const [scrollY, setScrollY] = useState(0);
 
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+
+  const [message, setMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
@@ -12,7 +42,68 @@ export default function App() {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
+
   }, []);
+
+  const handleSignup = async () => {
+
+    if (!email || !password) {
+      setMessage("Please fill all fields");
+      return;
+    }
+
+    try {
+
+      setLoading(true);
+
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      setMessage("Account created successfully!");
+
+    } catch (error) {
+
+      setMessage(error.message);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
+  const handleLogin = async () => {
+
+    if (!email || !password) {
+      setMessage("Please fill all fields");
+      return;
+    }
+
+    try {
+
+      setLoading(true);
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      setMessage("Login successful!");
+
+    } catch (error) {
+
+      setMessage(error.message);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
 
   return (
     <>
@@ -81,8 +172,6 @@ export default function App() {
           left:-150px;
 
           transform:translateY(${scrollY * 0.2}px);
-
-          transition:transform 0.1s linear;
         }
 
         .orb2{
@@ -93,8 +182,6 @@ export default function App() {
           right:-120px;
 
           transform:translateY(${scrollY * -0.15}px);
-
-          transition:transform 0.1s linear;
         }
 
         .orb3{
@@ -105,14 +192,11 @@ export default function App() {
           left:-100px;
 
           transform:translateY(${scrollY * 0.1}px);
-
-          transition:transform 0.1s linear;
         }
 
         .content{
           position:relative;
           z-index:2;
-          width:100%;
         }
 
         .hero{
@@ -138,8 +222,6 @@ export default function App() {
           -webkit-text-fill-color:transparent;
 
           margin-bottom:30px;
-
-          text-shadow:0 0 30px rgba(168,85,247,0.5);
         }
 
         .subtitle{
@@ -197,10 +279,6 @@ export default function App() {
           font-size:24px;
         }
 
-        .input::placeholder{
-          color:#9ca3af;
-        }
-
         .button{
           width:100%;
 
@@ -223,12 +301,6 @@ export default function App() {
         .signup{
           background:linear-gradient(90deg,#9333ea,#d8b4fe);
           color:white;
-
-          box-shadow:0 0 35px rgba(168,85,247,0.5);
-        }
-
-        .signup:hover{
-          transform:scale(1.03);
         }
 
         .login{
@@ -237,6 +309,14 @@ export default function App() {
           color:white;
 
           margin-top:25px;
+        }
+
+        .message{
+          margin-top:25px;
+
+          font-size:20px;
+
+          color:#d8b4fe;
         }
 
         .section{
@@ -271,24 +351,10 @@ export default function App() {
           padding:50px 40px;
 
           backdrop-filter:blur(16px);
-
-          box-shadow:
-            0 0 35px rgba(168,85,247,0.15),
-            inset 0 0 25px rgba(255,255,255,0.03);
-
-          transition:0.4s;
-        }
-
-        .card:hover{
-          transform:translateY(-10px);
-          box-shadow:
-            0 0 45px rgba(168,85,247,0.3),
-            inset 0 0 25px rgba(255,255,255,0.04);
         }
 
         .card h3{
           font-size:42px;
-          line-height:1.2;
 
           margin-bottom:30px;
 
@@ -312,33 +378,6 @@ export default function App() {
           font-size:24px;
         }
 
-        @media(max-width:768px){
-
-          .logo{
-            font-size:64px;
-          }
-
-          .subtitle{
-            font-size:22px;
-          }
-
-          .auth-title{
-            font-size:48px;
-          }
-
-          .section-title{
-            font-size:60px;
-          }
-
-          .card h3{
-            font-size:34px;
-          }
-
-          .card p{
-            font-size:21px;
-          }
-        }
-
       `}</style>
 
       <div className="app">
@@ -359,27 +398,45 @@ export default function App() {
 
             <div className="auth-card">
 
-              <h2 className="auth-title">Create Account</h2>
+              <h2 className="auth-title">
+                Create Account
+              </h2>
 
               <input
                 className="input"
                 type="email"
                 placeholder="Email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
               />
 
               <input
                 className="input"
                 type="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
               />
 
-              <button className="button signup">
-                Sign Up
+              <button
+                className="button signup"
+                onClick={handleSignup}
+              >
+                {loading ? "Loading..." : "Sign Up"}
               </button>
 
-              <button className="button login">
+              <button
+                className="button login"
+                onClick={handleLogin}
+              >
                 Login
               </button>
+
+              {message && (
+                <p className="message">
+                  {message}
+                </p>
+              )}
 
             </div>
 
@@ -414,42 +471,6 @@ export default function App() {
 
                 <p>
                   End-to-end encrypted cloud infrastructure keeps your memories secure forever.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-          <section className="section">
-
-            <h2 className="section-title">
-              How It Works
-            </h2>
-
-            <div className="grid">
-
-              <div className="card">
-                <h3>1. Upload Memories</h3>
-
-                <p>
-                  Upload photos, stories, conversations and life experiences.
-                </p>
-              </div>
-
-              <div className="card">
-                <h3>2. AI Processing</h3>
-
-                <p>
-                  Advanced AI transforms your memories into a digital personality.
-                </p>
-              </div>
-
-              <div className="card">
-                <h3>3. Live Forever</h3>
-
-                <p>
-                  Future generations can interact with your digital legacy forever.
                 </p>
               </div>
 
