@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { initializeApp } from "firebase/app";
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
 } from "firebase/auth";
-
-/* FIREBASE */
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcBd8zyTt8BhWxYbYJgC5nO5jfSQcEWLo",
@@ -25,289 +21,215 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export default function App() {
-  const [user, setUser] = useState(null);
-
   const handleSignup = async () => {
-    const email = prompt("Enter Email");
-    const password = prompt("Enter Password");
+    const email = prompt("Enter your email");
+    const password = prompt("Enter your password");
 
     if (!email || !password) return;
 
     try {
-      const userCredential =
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-      setUser(userCredential.user);
-
-      alert("Account Created Successfully!");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleLogin = async () => {
-    const email = prompt("Enter Email");
-    const password = prompt("Enter Password");
-
-    if (!email || !password) return;
-
-    try {
-      const userCredential =
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-      setUser(userCredential.user);
-
-      alert("Login Successful!");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-
-      setUser(null);
-
-      alert("Logged Out");
+      alert("Account created successfully!");
     } catch (error) {
       alert(error.message);
     }
   };
 
   return (
-    <div style={styles.page}>
-      {/* NAVBAR */}
-
-      <nav style={styles.navbar}>
-        <h1 style={styles.logo}>LegacyAI</h1>
-
-        <div style={styles.navButtons}>
-          {!user ? (
-            <>
-              <button
-                style={styles.outlineButton}
-                onClick={handleLogin}
-              >
-                Login
-              </button>
-
-              <button
-                style={styles.primaryButton}
-                onClick={handleSignup}
-              >
-                Sign Up
-              </button>
-            </>
-          ) : (
-            <button
-              style={styles.primaryButton}
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          )}
-        </div>
-      </nav>
-
+    <div
+      style={{
+        background:
+          "linear-gradient(180deg,#050816 0%,#0b1026 100%)",
+        minHeight: "100vh",
+        color: "white",
+        fontFamily: "Arial",
+      }}
+    >
       {/* HERO */}
 
-      <section style={styles.hero}>
-        <h2 style={styles.heroTitle}>
-          Your Memory
-          <br />
-          Can Live Forever
-        </h2>
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          minHeight: "100vh",
+          padding: "20px",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "72px",
+            marginBottom: "20px",
+            color: "#a855f7",
+            fontWeight: "bold",
+          }}
+        >
+          LegacyAI
+        </h1>
 
-        <p style={styles.heroText}>
-          LegacyAI transforms your voice,
-          memories and stories into a
-          timeless AI-powered digital legacy.
+        <p
+          style={{
+            fontSize: "24px",
+            color: "#cbd5e1",
+            maxWidth: "700px",
+            lineHeight: "1.7",
+            marginBottom: "40px",
+          }}
+        >
+          Transform your memories into an eternal AI-powered
+          digital legacy for future generations.
         </p>
 
-        <div style={styles.heroButtons}>
-          <button style={styles.primaryLarge}>
-            Start Your Legacy
-          </button>
-
-          <button style={styles.outlineLarge}>
-            Learn More
-          </button>
-        </div>
+        <button
+          onClick={handleSignup}
+          style={{
+            padding: "18px 50px",
+            borderRadius: "18px",
+            border: "none",
+            background:
+              "linear-gradient(90deg,#9333ea,#c084fc)",
+            color: "white",
+            fontSize: "20px",
+            cursor: "pointer",
+            fontWeight: "bold",
+            boxShadow: "0 0 30px rgba(168,85,247,0.5)",
+          }}
+        >
+          Create Your Legacy
+        </button>
       </section>
 
       {/* FEATURES */}
 
-      <section style={styles.features}>
-        <div style={styles.card}>
-          <h3>AI Memory</h3>
+      <section
+        style={{
+          padding: "80px 20px",
+          maxWidth: "1200px",
+          margin: "auto",
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+            fontSize: "42px",
+            marginBottom: "60px",
+          }}
+        >
+          Features
+        </h2>
 
-          <p style={styles.cardText}>
-            Preserve your voice and memories
-            forever using advanced AI.
-          </p>
-        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit,minmax(280px,1fr))",
+            gap: "30px",
+          }}
+        >
+          <div
+            style={{
+              background: "#111827",
+              padding: "35px",
+              borderRadius: "25px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "28px",
+                marginBottom: "20px",
+                color: "#c084fc",
+              }}
+            >
+              AI Memory
+            </h3>
 
-        <div style={styles.card}>
-          <h3>Emotional Legacy</h3>
+            <p
+              style={{
+                color: "#cbd5e1",
+                lineHeight: "1.8",
+              }}
+            >
+              Preserve conversations, voice, photos and
+              experiences forever using advanced AI.
+            </p>
+          </div>
 
-          <p style={styles.cardText}>
-            Future generations can interact
-            with your stories forever.
-          </p>
-        </div>
+          <div
+            style={{
+              background: "#111827",
+              padding: "35px",
+              borderRadius: "25px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "28px",
+                marginBottom: "20px",
+                color: "#c084fc",
+              }}
+            >
+              Emotional Legacy
+            </h3>
 
-        <div style={styles.card}>
-          <h3>Secure Forever</h3>
+            <p
+              style={{
+                color: "#cbd5e1",
+                lineHeight: "1.8",
+              }}
+            >
+              Allow future generations to interact with your
+              memories and wisdom naturally.
+            </p>
+          </div>
 
-          <p style={styles.cardText}>
-            Your data is protected using
-            encrypted cloud storage.
-          </p>
+          <div
+            style={{
+              background: "#111827",
+              padding: "35px",
+              borderRadius: "25px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "28px",
+                marginBottom: "20px",
+                color: "#c084fc",
+              }}
+            >
+              Secure Forever
+            </h3>
+
+            <p
+              style={{
+                color: "#cbd5e1",
+                lineHeight: "1.8",
+              }}
+            >
+              End-to-end encrypted cloud infrastructure keeps
+              your memories secure forever.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* FOOTER */}
 
-      <footer style={styles.footer}>
-        <h2 style={{ color: "#a855f7" }}>
-          LegacyAI
-        </h2>
-
-        <p>Preserve your memories forever.</p>
+      <footer
+        style={{
+          textAlign: "center",
+          padding: "40px",
+          color: "#94a3b8",
+        }}
+      >
+        © 2026 LegacyAI — The Future of Human Memory
       </footer>
     </div>
   );
 }
-
-/* STYLES */
-
-const styles = {
-  page: {
-    background: "#050816",
-    color: "white",
-    minHeight: "100vh",
-    fontFamily: "Arial",
-  },
-
-  navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "25px 40px",
-    borderBottom: "1px solid rgba(255,255,255,0.1)",
-  },
-
-  logo: {
-    color: "#a855f7",
-    fontSize: "35px",
-    margin: 0,
-  },
-
-  navButtons: {
-    display: "flex",
-    gap: "15px",
-  },
-
-  hero: {
-    textAlign: "center",
-    padding: "120px 20px",
-  },
-
-  heroTitle: {
-    fontSize: "70px",
-    marginBottom: "20px",
-    color: "#c084fc",
-  },
-
-  heroText: {
-    color: "#9ca3af",
-    fontSize: "22px",
-    maxWidth: "700px",
-    margin: "0 auto",
-  },
-
-  heroButtons: {
-    marginTop: "40px",
-    display: "flex",
-    justifyContent: "center",
-    gap: "20px",
-    flexWrap: "wrap",
-  },
-
-  features: {
-    display: "grid",
-    gridTemplateColumns:
-      "repeat(auto-fit,minmax(280px,1fr))",
-    gap: "25px",
-    padding: "40px",
-  },
-
-  card: {
-    background: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "25px",
-    padding: "30px",
-  },
-
-  cardText: {
-    color: "#9ca3af",
-    lineHeight: "1.8",
-  },
-
-  footer: {
-    borderTop: "1px solid rgba(255,255,255,0.1)",
-    padding: "40px",
-    textAlign: "center",
-    color: "#9ca3af",
-    marginTop: "80px",
-  },
-
-  primaryButton: {
-    background: "#9333ea",
-    color: "white",
-    border: "none",
-    padding: "12px 25px",
-    borderRadius: "14px",
-    cursor: "pointer",
-    fontSize: "16px",
-  },
-
-  outlineButton: {
-    background: "transparent",
-    color: "#c084fc",
-    border: "1px solid #9333ea",
-    padding: "12px 25px",
-    borderRadius: "14px",
-    cursor: "pointer",
-    fontSize: "16px",
-  },
-
-  primaryLarge: {
-    background: "#9333ea",
-    color: "white",
-    border: "none",
-    padding: "16px 35px",
-    borderRadius: "18px",
-    cursor: "pointer",
-    fontSize: "18px",
-  },
-
-  outlineLarge: {
-    background: "transparent",
-    color: "white",
-    border: "1px solid rgba(255,255,255,0.2)",
-    padding: "16px 35px",
-    borderRadius: "18px",
-    cursor: "pointer",
-    fontSize: "18px",
-  },
-};
