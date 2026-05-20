@@ -2,6 +2,32 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 export default function App() {
+const handleSignup = async () => {
+  const email = prompt("Enter your email");
+  const password = prompt("Enter your password");
+
+  if (!email || !password) return;
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    alert("Account created successfully!");
+  } catch (error) {
+    alert(error.message);
+  }
+};
+  const handleSignup = async () => {
+    const email = prompt("Enter your email");
+    const password = prompt("Enter your password");
+
+    if (!email || !password) return;
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Account created successfully!");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <div className="bg-[#050816] text-white min-h-screen overflow-hidden relative">
       {/* Background Glow */}
@@ -19,9 +45,14 @@ export default function App() {
             Login
           </button>
 
-          <button className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 transition">
-            Sign Up
-          </button>
+          <button
+  onClick={handleSignup}
+  className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 transition"
+>
+  Sign Up
+</button>
+            
+          
         </div>
       </nav>
 
