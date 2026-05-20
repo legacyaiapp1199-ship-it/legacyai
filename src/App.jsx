@@ -87,7 +87,64 @@ export default function App() {
         </div>
 
       </section>
+{/* How It Works */}
+<section className="px-8 py-28 relative z-10">
 
+  <div className="text-center mb-20">
+    <h2 className="text-5xl font-bold mb-6">
+      How LegacyAI Works
+    </h2>
+
+    <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+      Preserve your memories and personality forever
+      in just a few simple steps.
+    </p>
+  </div>
+
+  <div className="grid md:grid-cols-3 gap-8">
+
+    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:scale-105 transition duration-300">
+      <div className="text-5xl mb-6">🎙️</div>
+
+      <h3 className="text-2xl font-bold mb-4">
+        Record Your Story
+      </h3>
+
+      <p className="text-gray-400 leading-relaxed">
+        Upload voice recordings, memories,
+        videos, and life experiences.
+      </p>
+    </div>
+
+    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:scale-105 transition duration-300">
+      <div className="text-5xl mb-6">🧠</div>
+
+      <h3 className="text-2xl font-bold mb-4">
+        AI Learns You
+      </h3>
+
+      <p className="text-gray-400 leading-relaxed">
+        Advanced AI models understand your
+        personality, emotions, and wisdom.
+      </p>
+    </div>
+
+    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:scale-105 transition duration-300">
+      <div className="text-5xl mb-6">∞</div>
+
+      <h3 className="text-2xl font-bold mb-4">
+        Live Forever
+      </h3>
+
+      <p className="text-gray-400 leading-relaxed">
+        Future generations can interact with
+        your digital legacy anytime.
+      </p>
+    </div>
+
+  </div>
+
+</section>
     </div>
   )
 }
