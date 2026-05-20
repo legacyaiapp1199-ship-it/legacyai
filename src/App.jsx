@@ -1,7 +1,10 @@
 export default function App() {
   return (
-    <div className="bg-[#050816] text-white min-h-screen">
-      
+    <div className="bg-[#050816] text-white min-h-screen overflow-hidden relative">
+      {/* Background Glow */}
+<div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-purple-700 opacity-20 blur-[120px] rounded-full"></div>
+
+<div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-blue-700 opacity-20 blur-[120px] rounded-full"></div>
       {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-white/10">
         <h1 className="text-3xl font-bold text-purple-500">
@@ -20,15 +23,15 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center px-6 py-28">
+      <section className="relative flex flex-col items-center justify-center text-center px-6 py-32">
         
         <div className="max-w-4xl">
-          <h2 className="text-6xl font-extrabold leading-tight">
+          <h2 className="text-5xl md:text-7xl font-extrabold leading-tight bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
             Your Memory <br />
             Can Live Forever
           </h2>
 
-          <p className="text-gray-400 text-xl mt-8 leading-relaxed">
+          <p className="text-gray-400 text-lg md:text-xl mt-8 leading-relaxed max-w-3xl">
             LegacyAI transforms your memories, voice,
             thoughts, and life stories into a timeless
             AI-powered digital legacy for future generations.
@@ -48,9 +51,9 @@ export default function App() {
       </section>
 
       {/* Features */}
-      <section className="grid md:grid-cols-3 gap-8 px-8 pb-24">
+      <section className="grid md:grid-cols-3 gap-8 px-8 pb-24 relative z-10">
 
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-purple-500/40 hover:scale-105 transition duration-300">
           <h3 className="text-2xl font-bold mb-4">
             AI Memory
           </h3>
