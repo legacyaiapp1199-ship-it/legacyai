@@ -145,6 +145,108 @@ export default function App() {
   </div>
 
 </section>
+      {/* Pricing */}
+<section className="max-w-6xl mx-auto px-6 py-24">
+
+  <div className="text-center mb-16">
+    <h2 className="text-5xl md:text-6xl font-bold mb-6">
+      Choose Your Legacy
+    </h2>
+
+    <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+      Simple plans for preserving your memories forever.
+    </p>
+  </div>
+
+  <div className="grid md:grid-cols-3 gap-8">
+
+    {/* Basic */}
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl">
+
+      <h3 className="text-2xl font-bold mb-4">
+        Basic
+      </h3>
+
+      <div className="text-5xl font-bold mb-6">
+        $9
+        <span className="text-lg text-gray-400">
+          /month
+        </span>
+      </div>
+
+      <ul className="space-y-4 text-gray-300 mb-8">
+        <li>✔ Voice Memories</li>
+        <li>✔ AI Personality</li>
+        <li>✔ Secure Storage</li>
+      </ul>
+
+      <button className="w-full py-4 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+        Get Started
+      </button>
+
+    </div>
+
+    {/* Premium */}
+    <div className="bg-gradient-to-b from-purple-600/40 to-pink-500/20 border border-purple-400/30 rounded-3xl p-10 backdrop-blur-xl scale-105">
+
+      <div className="mb-4 inline-block px-4 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm">
+        MOST POPULAR
+      </div>
+
+      <h3 className="text-2xl font-bold mb-4">
+        Premium
+      </h3>
+
+      <div className="text-5xl font-bold mb-6">
+        $29
+        <span className="text-lg text-gray-300">
+          /month
+        </span>
+      </div>
+
+      <ul className="space-y-4 text-gray-200 mb-8">
+        <li>✔ Everything in Basic</li>
+        <li>✔ AI Voice Clone</li>
+        <li>✔ Video Memories</li>
+        <li>✔ Family Access</li>
+      </ul>
+
+      <button className="w-full py-4 rounded-2xl bg-purple-500 hover:bg-purple-400 transition">
+        Start Premium
+      </button>
+
+    </div>
+
+    {/* Eternal */}
+    <div className="bg-white/5 border border-white/10 rounded-3xl p-10 backdrop-blur-xl">
+
+      <h3 className="text-2xl font-bold mb-4">
+        Eternal
+      </h3>
+
+      <div className="text-5xl font-bold mb-6">
+        $99
+        <span className="text-lg text-gray-400">
+          /month
+        </span>
+      </div>
+
+      <ul className="space-y-4 text-gray-300 mb-8">
+        <li>✔ Full AI Avatar</li>
+        <li>✔ Unlimited Memories</li>
+        <li>✔ Future Generations Access</li>
+        <li>✔ Priority Support</li>
+      </ul>
+
+      <button className="w-full py-4 rounded-2xl bg-white/10 hover:bg-white/20 transition">
+        Go Eternal
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
     </div>
   )
 }
