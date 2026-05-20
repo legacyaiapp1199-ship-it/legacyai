@@ -1,8 +1,7 @@
 {
   "buildCommand": "pnpm install && pnpm run build",
   "outputDirectory": "dist",
-  "devCommand": "pnpm run dev",
-  "framework": null,
+  "framework": "vite",
   "env": {
     "NODE_ENV": "production"
   }
