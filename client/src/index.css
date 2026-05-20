@@ -45,7 +45,8 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-feature-settings: "rounding" 1;
   }
 
@@ -161,9 +162,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  background-color: hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-muted hover:bg-muted-foreground;
+  border-radius: 9999px;
+  background-color: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground));
 }
