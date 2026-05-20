@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+const firebaseConfig = {
+  apiKey: "AIzaSyAcBd8zyTt8BhWxYbYJgC5nO5jfSQcEWLo",
+  authDomain: "legacyai-34c5a.firebaseapp.com",
+  projectId: "legacyai-34c5a",
+  storageBucket: "legacyai-34c5a.firebasestorage.app",
+  messagingSenderId: "307910083498",
+  appId: "1:307910083498:web:82b7484d5805b49324a1d3"
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 export default function App() {
