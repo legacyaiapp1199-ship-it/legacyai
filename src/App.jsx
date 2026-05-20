@@ -31,8 +31,6 @@ export default function App() {
 
   const [message, setMessage] = useState("");
 
-  // REGISTER
-
   const handleSignup = async () => {
     try {
       const result = await createUserWithEmailAndPassword(
@@ -48,8 +46,6 @@ export default function App() {
       setMessage(error.message);
     }
   };
-
-  // LOGIN
 
   const handleLogin = async () => {
     try {
@@ -67,31 +63,34 @@ export default function App() {
     }
   };
 
-  // LOGOUT
-
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
+    await signOut(auth);
 
-      setUser(null);
+    setUser(null);
 
-      setMessage("Logged out successfully!");
-    } catch (error) {
-      setMessage(error.message);
-    }
+    setMessage("Logged out successfully!");
+  };
+
+  const cardStyle = {
+    background: "rgba(17,24,39,0.85)",
+    border: "1px solid rgba(168,85,247,0.15)",
+    borderRadius: "28px",
+    padding: "35px",
+    backdropFilter: "blur(12px)",
+    boxShadow: "0 0 25px rgba(168,85,247,0.12)",
   };
 
   return (
     <div
       style={{
         background:
-          "linear-gradient(180deg,#050816 0%,#0b1026 100%)",
+          "radial-gradient(circle at top,#111827 0%,#050816 45%,#02030d 100%)",
         minHeight: "100vh",
         color: "white",
         fontFamily: "Arial",
       }}
     >
-      {/* HERO SECTION */}
+      {/* HERO */}
 
       <section
         style={{
@@ -100,16 +99,31 @@ export default function App() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          padding: "40px 20px",
           textAlign: "center",
-          padding: "20px",
         }}
       >
+        <div
+          style={{
+            width: "160px",
+            height: "160px",
+            background:
+              "radial-gradient(circle,#9333ea 0%,transparent 70%)",
+            position: "absolute",
+            filter: "blur(60px)",
+          }}
+        ></div>
+
         <h1
           style={{
-            fontSize: "72px",
-            fontWeight: "bold",
-            color: "#a855f7",
-            marginBottom: "20px",
+            fontSize: "clamp(70px,12vw,130px)",
+            fontWeight: "900",
+            background:
+              "linear-gradient(90deg,#9333ea,#c084fc,#ffffff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            marginBottom: "25px",
+            zIndex: 2,
           }}
         >
           LegacyAI
@@ -117,33 +131,33 @@ export default function App() {
 
         <p
           style={{
-            fontSize: "24px",
-            color: "#cbd5e1",
-            maxWidth: "750px",
-            lineHeight: "1.8",
-            marginBottom: "40px",
+            maxWidth: "850px",
+            fontSize: "clamp(22px,3vw,34px)",
+            lineHeight: "1.7",
+            color: "#d1d5db",
+            marginBottom: "60px",
+            zIndex: 2,
           }}
         >
           Transform your memories into an eternal AI-powered
           digital legacy for future generations.
         </p>
 
-        {/* AUTH CARD */}
+        {/* AUTH */}
 
         <div
           style={{
-            background: "#111827",
-            padding: "40px",
-            borderRadius: "25px",
             width: "100%",
-            maxWidth: "420px",
-            boxShadow: "0 0 40px rgba(168,85,247,0.3)",
+            maxWidth: "480px",
+            ...cardStyle,
+            zIndex: 2,
           }}
         >
           <h2
             style={{
-              fontSize: "32px",
-              marginBottom: "25px",
+              fontSize: "48px",
+              marginBottom: "30px",
+              fontWeight: "800",
             }}
           >
             {user ? "Welcome Back" : "Create Account"}
@@ -160,13 +174,13 @@ export default function App() {
                 }
                 style={{
                   width: "100%",
-                  padding: "15px",
-                  borderRadius: "12px",
-                  border: "none",
+                  padding: "18px",
                   marginBottom: "20px",
-                  fontSize: "16px",
+                  borderRadius: "18px",
+                  border: "none",
                   background: "#1f2937",
                   color: "white",
+                  fontSize: "18px",
                 }}
               />
 
@@ -179,13 +193,13 @@ export default function App() {
                 }
                 style={{
                   width: "100%",
-                  padding: "15px",
-                  borderRadius: "12px",
+                  padding: "18px",
+                  marginBottom: "25px",
+                  borderRadius: "18px",
                   border: "none",
-                  marginBottom: "20px",
-                  fontSize: "16px",
                   background: "#1f2937",
                   color: "white",
+                  fontSize: "18px",
                 }}
               />
 
@@ -193,16 +207,18 @@ export default function App() {
                 onClick={handleSignup}
                 style={{
                   width: "100%",
-                  padding: "16px",
-                  borderRadius: "14px",
+                  padding: "18px",
+                  borderRadius: "18px",
                   border: "none",
                   background:
                     "linear-gradient(90deg,#9333ea,#c084fc)",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: "bold",
+                  fontSize: "24px",
+                  fontWeight: "800",
                   cursor: "pointer",
-                  marginBottom: "15px",
+                  marginBottom: "18px",
+                  boxShadow:
+                    "0 0 25px rgba(168,85,247,0.5)",
                 }}
               >
                 Sign Up
@@ -212,13 +228,13 @@ export default function App() {
                 onClick={handleLogin}
                 style={{
                   width: "100%",
-                  padding: "16px",
-                  borderRadius: "14px",
-                  border: "1px solid #9333ea",
+                  padding: "18px",
+                  borderRadius: "18px",
+                  border: "2px solid #9333ea",
                   background: "transparent",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: "bold",
+                  fontSize: "24px",
+                  fontWeight: "800",
                   cursor: "pointer",
                 }}
               >
@@ -231,9 +247,9 @@ export default function App() {
             <>
               <p
                 style={{
-                  marginBottom: "20px",
+                  fontSize: "22px",
                   color: "#c084fc",
-                  fontSize: "18px",
+                  marginBottom: "20px",
                 }}
               >
                 Logged in as:
@@ -241,8 +257,8 @@ export default function App() {
 
               <p
                 style={{
+                  color: "#d1d5db",
                   marginBottom: "30px",
-                  color: "#cbd5e1",
                 }}
               >
                 {user.email}
@@ -252,13 +268,13 @@ export default function App() {
                 onClick={handleLogout}
                 style={{
                   width: "100%",
-                  padding: "16px",
-                  borderRadius: "14px",
+                  padding: "18px",
+                  borderRadius: "18px",
                   border: "none",
                   background: "#ef4444",
                   color: "white",
-                  fontSize: "18px",
-                  fontWeight: "bold",
+                  fontSize: "22px",
+                  fontWeight: "800",
                   cursor: "pointer",
                 }}
               >
@@ -272,7 +288,6 @@ export default function App() {
               style={{
                 marginTop: "20px",
                 color: "#c084fc",
-                fontSize: "15px",
               }}
             >
               {message}
@@ -285,17 +300,17 @@ export default function App() {
 
       <section
         style={{
-          padding: "80px 20px",
-          maxWidth: "1200px",
+          padding: "100px 20px",
+          maxWidth: "1300px",
           margin: "auto",
         }}
       >
         <h2
           style={{
             textAlign: "center",
-            fontSize: "52px",
-            marginBottom: "60px",
-            fontWeight: "bold",
+            fontSize: "70px",
+            marginBottom: "70px",
+            fontWeight: "900",
           }}
         >
           Features
@@ -305,102 +320,47 @@ export default function App() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit,minmax(280px,1fr))",
-            gap: "30px",
+              "repeat(auto-fit,minmax(300px,1fr))",
+            gap: "35px",
           }}
         >
-          {/* CARD 1 */}
+          {[
+            {
+              title: "AI Memory",
+              text: "Preserve conversations, voice, photos and experiences forever using advanced AI.",
+            },
+            {
+              title: "Emotional Legacy",
+              text: "Allow future generations to interact with your memories and wisdom naturally.",
+            },
+            {
+              title: "Secure Forever",
+              text: "End-to-end encrypted cloud infrastructure keeps your memories secure forever.",
+            },
+          ].map((item, index) => (
+            <div key={index} style={cardStyle}>
+              <h3
+                style={{
+                  color: "#c084fc",
+                  fontSize: "40px",
+                  marginBottom: "25px",
+                  fontWeight: "800",
+                }}
+              >
+                {item.title}
+              </h3>
 
-          <div
-            style={{
-              background: "#111827",
-              padding: "40px",
-              borderRadius: "30px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                fontSize: "32px",
-                marginBottom: "20px",
-              }}
-            >
-              AI Memory
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-                fontSize: "20px",
-              }}
-            >
-              Preserve conversations, voice, photos and
-              experiences forever using advanced AI.
-            </p>
-          </div>
-
-          {/* CARD 2 */}
-
-          <div
-            style={{
-              background: "#111827",
-              padding: "40px",
-              borderRadius: "30px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                fontSize: "32px",
-                marginBottom: "20px",
-              }}
-            >
-              Emotional Legacy
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-                fontSize: "20px",
-              }}
-            >
-              Allow future generations to interact with your
-              memories and wisdom naturally.
-            </p>
-          </div>
-
-          {/* CARD 3 */}
-
-          <div
-            style={{
-              background: "#111827",
-              padding: "40px",
-              borderRadius: "30px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                fontSize: "32px",
-                marginBottom: "20px",
-              }}
-            >
-              Secure Forever
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.8",
-                fontSize: "20px",
-              }}
-            >
-              End-to-end encrypted cloud infrastructure keeps
-              your memories secure forever.
-            </p>
-          </div>
+              <p
+                style={{
+                  color: "#d1d5db",
+                  lineHeight: "1.9",
+                  fontSize: "22px",
+                }}
+              >
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -408,17 +368,17 @@ export default function App() {
 
       <section
         style={{
-          padding: "80px 20px",
-          maxWidth: "1200px",
+          padding: "100px 20px",
+          maxWidth: "1300px",
           margin: "auto",
         }}
       >
         <h2
           style={{
             textAlign: "center",
-            fontSize: "52px",
-            marginBottom: "60px",
-            fontWeight: "bold",
+            fontSize: "70px",
+            marginBottom: "70px",
+            fontWeight: "900",
           }}
         >
           How It Works
@@ -428,93 +388,47 @@ export default function App() {
           style={{
             display: "grid",
             gridTemplateColumns:
-              "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "25px",
+              "repeat(auto-fit,minmax(280px,1fr))",
+            gap: "35px",
           }}
         >
-          <div
-            style={{
-              background: "#111827",
-              padding: "35px",
-              borderRadius: "25px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                marginBottom: "20px",
-                fontSize: "28px",
-              }}
-            >
-              1. Upload Memories
-            </h3>
+          {[
+            {
+              title: "1. Upload Memories",
+              text: "Upload photos, stories, conversations and life experiences.",
+            },
+            {
+              title: "2. AI Processing",
+              text: "Advanced AI transforms your memories into a digital personality.",
+            },
+            {
+              title: "3. Live Forever",
+              text: "Future generations can interact with your digital legacy forever.",
+            },
+          ].map((item, index) => (
+            <div key={index} style={cardStyle}>
+              <h3
+                style={{
+                  color: "#c084fc",
+                  fontSize: "38px",
+                  marginBottom: "20px",
+                  fontWeight: "800",
+                }}
+              >
+                {item.title}
+              </h3>
 
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.7",
-              }}
-            >
-              Upload photos, stories, conversations and life
-              experiences.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: "#111827",
-              padding: "35px",
-              borderRadius: "25px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                marginBottom: "20px",
-                fontSize: "28px",
-              }}
-            >
-              2. AI Processing
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.7",
-              }}
-            >
-              Advanced AI transforms your memories into a
-              digital personality.
-            </p>
-          </div>
-
-          <div
-            style={{
-              background: "#111827",
-              padding: "35px",
-              borderRadius: "25px",
-            }}
-          >
-            <h3
-              style={{
-                color: "#c084fc",
-                marginBottom: "20px",
-                fontSize: "28px",
-              }}
-            >
-              3. Live Forever
-            </h3>
-
-            <p
-              style={{
-                color: "#cbd5e1",
-                lineHeight: "1.7",
-              }}
-            >
-              Future generations can interact with your digital
-              legacy forever.
-            </p>
-          </div>
+              <p
+                style={{
+                  color: "#d1d5db",
+                  lineHeight: "1.8",
+                  fontSize: "21px",
+                }}
+              >
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -523,9 +437,9 @@ export default function App() {
       <footer
         style={{
           textAlign: "center",
-          padding: "60px 20px",
-          color: "#94a3b8",
-          fontSize: "18px",
+          padding: "80px 20px",
+          color: "#9ca3af",
+          fontSize: "22px",
         }}
       >
         © 2026 LegacyAI — The Future of Human Memory
