@@ -15,19 +15,7 @@ const handleSignup = async () => {
     alert(error.message);
   }
 };
-  const handleSignup = async () => {
-    const email = prompt("Enter your email");
-    const password = prompt("Enter your password");
-
-    if (!email || !password) return;
-
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Account created successfully!");
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  
   return (
     <div className="bg-[#050816] text-white min-h-screen overflow-hidden relative">
       {/* Background Glow */}
