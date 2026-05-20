@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm install && pnpm run build",
-  "outputDirectory": "dist/client",
+  "outputDirectory": "dist",
   "framework": "vite",
   "env": {
     "NODE_ENV": "production"
