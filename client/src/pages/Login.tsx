@@ -14,32 +14,32 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="border-b border-border/40 bg-background/95 backdrop-blur-md">
-        <div className="container flex items-center justify-between py-4">
+      <nav className="border-b border-gray-200 bg-white/95 backdrop-blur-md">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div
             className="flex items-center gap-2 cursor-pointer group"
             onClick={() => navigate("/")}
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-purple-600 group-hover:shadow-lg group-hover:shadow-accent/30 transition-all">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 group-hover:shadow-lg group-hover:shadow-purple-500/30 transition-all">
               <Sparkles className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-foreground">LegacyAI</span>
+            <span className="text-xl font-bold text-gray-900">LegacyAI</span>
           </div>
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="min-h-[calc(100vh-80px)] flex items-center justify-center py-12 px-4">
+      <div className="min-h-[calc(100vh-80px)] flex items-center justify-center py-12 px-4 bg-gradient-to-br from-white via-purple-50 to-blue-50">
         <div className="w-full max-w-md">
           {/* Login Card */}
-          <div className="rounded-2xl border border-border/40 bg-gradient-to-br from-card to-card/50 p-8 sm:p-10 shadow-lg">
+          <div className="rounded-2xl border border-gray-200 bg-white p-8 sm:p-10 shadow-xl">
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-foreground mb-2">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 Welcome Back
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-gray-600">
                 Sign in to your account to continue sharing your memories
               </p>
             </div>
@@ -47,7 +47,7 @@ export default function Login() {
             {/* OAuth Login Button */}
             <Button
               size="lg"
-              className="w-full bg-gradient-to-r from-accent to-purple-600 text-white hover:shadow-lg hover:shadow-accent/30 transition-all duration-300 text-base font-semibold h-12 mb-6"
+              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 text-base font-semibold h-12 mb-6"
               onClick={() => {
                 window.location.href = getLoginUrl();
               }}
@@ -61,19 +61,19 @@ export default function Login() {
             {/* Divider */}
             <div className="relative mb-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-border/40" />
+                <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-card text-muted-foreground">or</span>
+                <span className="px-2 bg-white text-gray-500">or</span>
               </div>
             </div>
 
             {/* Sign Up Link */}
-            <p className="text-center text-sm text-muted-foreground mb-8">
+            <p className="text-center text-sm text-gray-600 mb-8">
               Don't have an account?{" "}
               <button
                 onClick={() => navigate("/signup")}
-                className="font-semibold text-accent hover:text-accent/80 transition-colors"
+                className="font-semibold text-purple-600 hover:text-purple-700 transition-colors"
               >
                 Create one
               </button>
@@ -82,7 +82,7 @@ export default function Login() {
             {/* Back to Home */}
             <Button
               variant="outline"
-              className="w-full border-border/60 hover:bg-accent/5"
+              className="w-full border-gray-300 text-gray-900 hover:bg-gray-50"
               onClick={() => navigate("/")}
             >
               Back to Home
@@ -91,43 +91,43 @@ export default function Login() {
 
           {/* Trust Indicators */}
           <div className="mt-12 space-y-4">
-            <div className="flex gap-4 rounded-xl border border-border/40 bg-card/50 p-4 hover:border-accent/40 hover:bg-card transition-all">
+            <div className="flex gap-4 rounded-xl border border-gray-200 bg-white p-4 hover:border-purple-300 hover:bg-purple-50 transition-all">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <Lock className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100">
+                  <Lock className="h-5 w-5 text-purple-600" />
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground text-sm">Secure & Private</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-gray-900 text-sm">Secure & Private</h3>
+                <p className="text-xs text-gray-600 mt-1">
                   Your memories are encrypted and protected
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-4 rounded-xl border border-border/40 bg-card/50 p-4 hover:border-accent/40 hover:bg-card transition-all">
+            <div className="flex gap-4 rounded-xl border border-gray-200 bg-white p-4 hover:border-purple-300 hover:bg-purple-50 transition-all">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <Users className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100">
+                  <Users className="h-5 w-5 text-blue-600" />
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground text-sm">Connect & Share</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-gray-900 text-sm">Connect & Share</h3>
+                <p className="text-xs text-gray-600 mt-1">
                   Build meaningful connections with loved ones
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-4 rounded-xl border border-border/40 bg-card/50 p-4 hover:border-accent/40 hover:bg-card transition-all">
+            <div className="flex gap-4 rounded-xl border border-gray-200 bg-white p-4 hover:border-purple-300 hover:bg-purple-50 transition-all">
               <div className="flex-shrink-0">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
-                  <Heart className="h-5 w-5 text-accent" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-pink-100">
+                  <Heart className="h-5 w-5 text-pink-600" />
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground text-sm">Create Legacy</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+                <h3 className="font-semibold text-gray-900 text-sm">Create Legacy</h3>
+                <p className="text-xs text-gray-600 mt-1">
                   Preserve your stories for future generations
                 </p>
               </div>
