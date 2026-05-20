@@ -35,6 +35,8 @@ const handleSignup = async () => {
 
           <button
   onClick={handleSignup}
+  <button
+  onClick={handleSignup}
   className="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 transition"
 >
   Sign Up
