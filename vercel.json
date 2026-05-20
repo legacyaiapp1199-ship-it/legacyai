@@ -1,6 +1,16 @@
 {
   "buildCommand": "pnpm install && pnpm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": ".",
   "devCommand": "pnpm run dev",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }
