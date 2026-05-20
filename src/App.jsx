@@ -1,567 +1,468 @@
-import React, { useState } from "react";
-
-import { initializeApp } from "firebase/app";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAcBd8zyTt8BhWxYbYJgC5nO5jfSQcEWLo",
-  authDomain: "legacyai-34c5a.firebaseapp.com",
-  projectId: "legacyai-34c5a",
-  storageBucket: "legacyai-34c5a.appspot.com",
-  messagingSenderId: "307910083498",
-  appId: "1:307910083498:web:82b7484d5805b49324a1d3",
-};
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [email, setEmail] = useState("");
 
-  const [password, setPassword] = useState("");
+  const [scrollY, setScrollY] = useState(0);
 
-  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
-  const [message, setMessage] = useState("");
+    window.addEventListener("scroll", handleScroll);
 
-  const handleSignup = async () => {
-    try {
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      setUser(result.user);
-
-      setMessage("Account created successfully!");
-    } catch (error) {
-      setMessage(error.message);
-    }
-  };
-
-  const handleLogin = async () => {
-    try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      setUser(result.user);
-
-      setMessage("Logged in successfully!");
-    } catch (error) {
-      setMessage(error.message);
-    }
-  };
-
-  const handleLogout = async () => {
-    await signOut(auth);
-
-    setUser(null);
-
-    setMessage("Logged out successfully!");
-  };
-
-  const cardStyle = {
-    background: "rgba(17,24,39,0.82)",
-    border: "1px solid rgba(168,85,247,0.18)",
-    borderRadius: "32px",
-    padding: "40px",
-    backdropFilter: "blur(16px)",
-    boxShadow: "0 0 30px rgba(168,85,247,0.12)",
-  };
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <style>
-        {`
-          *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-          }
+      <style>{`
 
-          body{
-            overflow-x:hidden;
-            background:#02030d;
-          }
+        *{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+        }
 
-          html{
-            scroll-behavior:smooth;
-          }
+        body{
+          font-family:Arial, sans-serif;
+          overflow-x:hidden;
+          background:#02030d;
+          color:white;
+        }
 
-          @keyframes gradientMove {
-            0% {
-              background-position: 0% 50%;
-            }
+        html{
+          scroll-behavior:smooth;
+        }
 
-            50% {
-              background-position: 100% 50%;
-            }
+        .app{
+          position:relative;
+          min-height:100vh;
+          overflow:hidden;
 
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-
-          @keyframes floatingGlow {
-            0% {
-              transform: translateY(0px);
-            }
-
-            50% {
-              transform: translateY(-40px);
-            }
-
-            100% {
-              transform: translateY(0px);
-            }
-          }
-
-          .floating-bg {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: rgba(168,85,247,0.15);
-            filter: blur(120px);
-            animation: floatingGlow 8s ease-in-out infinite;
-            z-index: 0;
-          }
-
-          .main-button{
-            transition:0.3s;
-          }
-
-          .main-button:hover{
-            transform:translateY(-4px) scale(1.02);
-            box-shadow:0 0 40px rgba(168,85,247,0.8);
-          }
-
-          .feature-card{
-            transition:0.35s;
-          }
-
-          .feature-card:hover{
-            transform:translateY(-10px);
-            border:1px solid rgba(192,132,252,0.4);
-            box-shadow:0 0 40px rgba(168,85,247,0.2);
-          }
-
-          input{
-            outline:none;
-          }
-
-          input:focus{
-            border:1px solid #9333ea;
-            box-shadow:0 0 20px rgba(168,85,247,0.3);
-          }
-        `}
-      </style>
-
-      <div
-        style={{
           background:
-            "linear-gradient(-45deg,#02030d,#050816,#111827,#1e1b4b)",
-          backgroundSize: "400% 400%",
-          animation: "gradientMove 15s ease infinite",
-          minHeight: "100vh",
-          color: "white",
-          fontFamily: "Arial",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        {/* BACKGROUND GLOW */}
+            radial-gradient(circle at top left, rgba(168,85,247,0.18), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(99,102,241,0.15), transparent 30%),
+            linear-gradient(-45deg,#02030d,#050816,#111827,#1e1b4b);
 
-        <div
-          className="floating-bg"
-          style={{
-            top: "5%",
-            left: "-10%",
-          }}
-        ></div>
+          background-size:400% 400%;
 
-        <div
-          className="floating-bg"
-          style={{
-            bottom: "10%",
-            right: "-10%",
-            animationDelay: "4s",
-          }}
-        ></div>
+          animation:gradientShift 18s ease infinite;
+        }
 
-        {/* HERO */}
+        @keyframes gradientShift {
+          0%{
+            background-position:0% 50%;
+          }
 
-        <section
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            padding: "60px 20px",
-            textAlign: "center",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "clamp(72px,12vw,140px)",
-              fontWeight: "900",
-              background:
-                "linear-gradient(90deg,#9333ea,#c084fc,#ffffff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              marginBottom: "30px",
-              textShadow: "0 0 35px rgba(168,85,247,0.4)",
-            }}
-          >
-            LegacyAI
-          </h1>
+          50%{
+            background-position:100% 50%;
+          }
 
-          <p
-            style={{
-              maxWidth: "900px",
-              fontSize: "clamp(24px,3vw,36px)",
-              lineHeight: "1.7",
-              color: "#d1d5db",
-              marginBottom: "70px",
-            }}
-          >
-            Transform your memories into an eternal AI-powered
-            digital legacy for future generations.
-          </p>
+          100%{
+            background-position:0% 50%;
+          }
+        }
 
-          {/* AUTH CARD */}
+        .orb{
+          position:absolute;
+          border-radius:50%;
+          filter:blur(120px);
+          opacity:0.5;
+          z-index:0;
+          pointer-events:none;
+        }
 
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "500px",
-              ...cardStyle,
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "56px",
-                marginBottom: "35px",
-                fontWeight: "900",
-              }}
-            >
-              {user ? "Welcome Back" : "Create Account"}
+        .orb1{
+          width:500px;
+          height:500px;
+          background:#9333ea;
+          top:-150px;
+          left:-150px;
+
+          transform:translateY(${scrollY * 0.2}px);
+
+          transition:transform 0.1s linear;
+        }
+
+        .orb2{
+          width:450px;
+          height:450px;
+          background:#4f46e5;
+          top:800px;
+          right:-120px;
+
+          transform:translateY(${scrollY * -0.15}px);
+
+          transition:transform 0.1s linear;
+        }
+
+        .orb3{
+          width:400px;
+          height:400px;
+          background:#7e22ce;
+          top:1600px;
+          left:-100px;
+
+          transform:translateY(${scrollY * 0.1}px);
+
+          transition:transform 0.1s linear;
+        }
+
+        .content{
+          position:relative;
+          z-index:2;
+          width:100%;
+        }
+
+        .hero{
+          min-height:100vh;
+
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+
+          text-align:center;
+
+          padding:40px 24px;
+        }
+
+        .logo{
+          font-size:72px;
+          font-weight:900;
+
+          background:linear-gradient(90deg,#9333ea,#e9d5ff);
+
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+
+          margin-bottom:30px;
+
+          text-shadow:0 0 30px rgba(168,85,247,0.5);
+        }
+
+        .subtitle{
+          max-width:800px;
+
+          font-size:24px;
+          line-height:1.8;
+
+          color:#d1d5db;
+
+          margin-bottom:60px;
+        }
+
+        .auth-card{
+          width:100%;
+          max-width:700px;
+
+          background:rgba(10,20,45,0.7);
+
+          border:1px solid rgba(168,85,247,0.25);
+
+          backdrop-filter:blur(20px);
+
+          border-radius:40px;
+
+          padding:50px 35px;
+
+          box-shadow:
+            0 0 40px rgba(168,85,247,0.15),
+            inset 0 0 40px rgba(255,255,255,0.03);
+        }
+
+        .auth-title{
+          font-size:60px;
+          font-weight:900;
+
+          margin-bottom:40px;
+        }
+
+        .input{
+          width:100%;
+
+          background:#1e293b;
+
+          border:none;
+
+          border-radius:22px;
+
+          padding:24px;
+
+          margin-bottom:25px;
+
+          color:white;
+
+          font-size:24px;
+        }
+
+        .input::placeholder{
+          color:#9ca3af;
+        }
+
+        .button{
+          width:100%;
+
+          padding:24px;
+
+          border:none;
+
+          border-radius:24px;
+
+          font-size:28px;
+          font-weight:bold;
+
+          cursor:pointer;
+
+          margin-top:10px;
+
+          transition:0.3s;
+        }
+
+        .signup{
+          background:linear-gradient(90deg,#9333ea,#d8b4fe);
+          color:white;
+
+          box-shadow:0 0 35px rgba(168,85,247,0.5);
+        }
+
+        .signup:hover{
+          transform:scale(1.03);
+        }
+
+        .login{
+          background:transparent;
+          border:2px solid #9333ea;
+          color:white;
+
+          margin-top:25px;
+        }
+
+        .section{
+          padding:120px 24px;
+        }
+
+        .section-title{
+          text-align:center;
+
+          font-size:72px;
+          font-weight:900;
+
+          margin-bottom:70px;
+        }
+
+        .grid{
+          display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+          gap:40px;
+
+          max-width:1300px;
+          margin:auto;
+        }
+
+        .card{
+          background:rgba(10,20,45,0.7);
+
+          border:1px solid rgba(168,85,247,0.25);
+
+          border-radius:38px;
+
+          padding:50px 40px;
+
+          backdrop-filter:blur(16px);
+
+          box-shadow:
+            0 0 35px rgba(168,85,247,0.15),
+            inset 0 0 25px rgba(255,255,255,0.03);
+
+          transition:0.4s;
+        }
+
+        .card:hover{
+          transform:translateY(-10px);
+          box-shadow:
+            0 0 45px rgba(168,85,247,0.3),
+            inset 0 0 25px rgba(255,255,255,0.04);
+        }
+
+        .card h3{
+          font-size:42px;
+          line-height:1.2;
+
+          margin-bottom:30px;
+
+          color:#c084fc;
+        }
+
+        .card p{
+          font-size:24px;
+          line-height:1.9;
+
+          color:#d1d5db;
+        }
+
+        footer{
+          text-align:center;
+
+          padding:80px 20px;
+
+          color:#9ca3af;
+
+          font-size:24px;
+        }
+
+        @media(max-width:768px){
+
+          .logo{
+            font-size:64px;
+          }
+
+          .subtitle{
+            font-size:22px;
+          }
+
+          .auth-title{
+            font-size:48px;
+          }
+
+          .section-title{
+            font-size:60px;
+          }
+
+          .card h3{
+            font-size:34px;
+          }
+
+          .card p{
+            font-size:21px;
+          }
+        }
+
+      `}</style>
+
+      <div className="app">
+
+        <div className="orb orb1"></div>
+        <div className="orb orb2"></div>
+        <div className="orb orb3"></div>
+
+        <div className="content">
+
+          <section className="hero">
+
+            <h1 className="logo">LegacyAI</h1>
+
+            <p className="subtitle">
+              Transform your memories into an eternal AI-powered digital legacy for future generations.
+            </p>
+
+            <div className="auth-card">
+
+              <h2 className="auth-title">Create Account</h2>
+
+              <input
+                className="input"
+                type="email"
+                placeholder="Email"
+              />
+
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+              />
+
+              <button className="button signup">
+                Sign Up
+              </button>
+
+              <button className="button login">
+                Login
+              </button>
+
+            </div>
+
+          </section>
+
+          <section className="section">
+
+            <h2 className="section-title">
+              Features
             </h2>
 
-            {!user && (
-              <>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
-                  }
-                  style={{
-                    width: "100%",
-                    padding: "20px",
-                    marginBottom: "20px",
-                    borderRadius: "20px",
-                    border: "1px solid transparent",
-                    background: "#1f2937",
-                    color: "white",
-                    fontSize: "20px",
-                  }}
-                />
+            <div className="grid">
 
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
-                  }
-                  style={{
-                    width: "100%",
-                    padding: "20px",
-                    marginBottom: "25px",
-                    borderRadius: "20px",
-                    border: "1px solid transparent",
-                    background: "#1f2937",
-                    color: "white",
-                    fontSize: "20px",
-                  }}
-                />
+              <div className="card">
+                <h3>AI Memory</h3>
 
-                <button
-                  className="main-button"
-                  onClick={handleSignup}
-                  style={{
-                    width: "100%",
-                    padding: "20px",
-                    borderRadius: "22px",
-                    border: "none",
-                    background:
-                      "linear-gradient(90deg,#9333ea,#c084fc)",
-                    color: "white",
-                    fontSize: "28px",
-                    fontWeight: "900",
-                    cursor: "pointer",
-                    marginBottom: "18px",
-                    boxShadow:
-                      "0 0 30px rgba(168,85,247,0.5)",
-                  }}
-                >
-                  Sign Up
-                </button>
-
-                <button
-                  className="main-button"
-                  onClick={handleLogin}
-                  style={{
-                    width: "100%",
-                    padding: "20px",
-                    borderRadius: "22px",
-                    border: "2px solid #9333ea",
-                    background: "transparent",
-                    color: "white",
-                    fontSize: "28px",
-                    fontWeight: "900",
-                    cursor: "pointer",
-                  }}
-                >
-                  Login
-                </button>
-              </>
-            )}
-
-            {user && (
-              <>
-                <p
-                  style={{
-                    fontSize: "24px",
-                    color: "#c084fc",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Logged in as:
-                </p>
-
-                <p
-                  style={{
-                    color: "#d1d5db",
-                    marginBottom: "30px",
-                    fontSize: "18px",
-                  }}
-                >
-                  {user.email}
-                </p>
-
-                <button
-                  className="main-button"
-                  onClick={handleLogout}
-                  style={{
-                    width: "100%",
-                    padding: "18px",
-                    borderRadius: "20px",
-                    border: "none",
-                    background: "#ef4444",
-                    color: "white",
-                    fontSize: "24px",
-                    fontWeight: "900",
-                    cursor: "pointer",
-                  }}
-                >
-                  Logout
-                </button>
-              </>
-            )}
-
-            {message && (
-              <p
-                style={{
-                  marginTop: "20px",
-                  color: "#c084fc",
-                  fontSize: "18px",
-                }}
-              >
-                {message}
-              </p>
-            )}
-          </div>
-        </section>
-
-        {/* FEATURES */}
-
-        <section
-          style={{
-            padding: "120px 20px",
-            maxWidth: "1400px",
-            margin: "auto",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          <h2
-            style={{
-              textAlign: "center",
-              fontSize: "clamp(60px,9vw,90px)",
-              marginBottom: "80px",
-              fontWeight: "900",
-            }}
-          >
-            Features
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(320px,1fr))",
-              gap: "35px",
-            }}
-          >
-            {[
-              {
-                title: "AI Memory",
-                text: "Preserve conversations, voice, photos and experiences forever using advanced AI.",
-              },
-              {
-                title: "Emotional Legacy",
-                text: "Allow future generations to interact with your memories and wisdom naturally.",
-              },
-              {
-                title: "Secure Forever",
-                text: "End-to-end encrypted cloud infrastructure keeps your memories secure forever.",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="feature-card"
-                style={cardStyle}
-              >
-                <h3
-                  style={{
-                    color: "#c084fc",
-                    fontSize: "44px",
-                    marginBottom: "25px",
-                    fontWeight: "900",
-                  }}
-                >
-                  {item.title}
-                </h3>
-
-                <p
-                  style={{
-                    color: "#d1d5db",
-                    lineHeight: "1.9",
-                    fontSize: "23px",
-                  }}
-                >
-                  {item.text}
+                <p>
+                  Preserve conversations, voice, photos and experiences forever using advanced AI.
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* HOW IT WORKS */}
+              <div className="card">
+                <h3>Emotional Legacy</h3>
 
-        <section
-          style={{
-            padding: "120px 20px",
-            maxWidth: "1400px",
-            margin: "auto",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          <h2
-            style={{
-              textAlign: "center",
-              fontSize: "clamp(60px,9vw,90px)",
-              marginBottom: "80px",
-              fontWeight: "900",
-            }}
-          >
-            How It Works
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit,minmax(320px,1fr))",
-              gap: "35px",
-            }}
-          >
-            {[
-              {
-                title: "1. Upload Memories",
-                text: "Upload photos, stories, conversations and life experiences.",
-              },
-              {
-                title: "2. AI Processing",
-                text: "Advanced AI transforms your memories into a digital personality.",
-              },
-              {
-                title: "3. Live Forever",
-                text: "Future generations can interact with your digital legacy forever.",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="feature-card"
-                style={cardStyle}
-              >
-                <h3
-                  style={{
-                    color: "#c084fc",
-                    fontSize: "42px",
-                    marginBottom: "25px",
-                    fontWeight: "900",
-                  }}
-                >
-                  {item.title}
-                </h3>
-
-                <p
-                  style={{
-                    color: "#d1d5db",
-                    lineHeight: "1.9",
-                    fontSize: "22px",
-                  }}
-                >
-                  {item.text}
+                <p>
+                  Allow future generations to interact with your memories and wisdom naturally.
                 </p>
               </div>
-            ))}
-          </div>
-        </section>
 
-        {/* FOOTER */}
+              <div className="card">
+                <h3>Secure Forever</h3>
 
-        <footer
-          style={{
-            textAlign: "center",
-            padding: "100px 20px",
-            color: "#9ca3af",
-            fontSize: "24px",
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          © 2026 LegacyAI — The Future of Human Memory
-        </footer>
+                <p>
+                  End-to-end encrypted cloud infrastructure keeps your memories secure forever.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+          <section className="section">
+
+            <h2 className="section-title">
+              How It Works
+            </h2>
+
+            <div className="grid">
+
+              <div className="card">
+                <h3>1. Upload Memories</h3>
+
+                <p>
+                  Upload photos, stories, conversations and life experiences.
+                </p>
+              </div>
+
+              <div className="card">
+                <h3>2. AI Processing</h3>
+
+                <p>
+                  Advanced AI transforms your memories into a digital personality.
+                </p>
+              </div>
+
+              <div className="card">
+                <h3>3. Live Forever</h3>
+
+                <p>
+                  Future generations can interact with your digital legacy forever.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+          <footer>
+            © 2026 LegacyAI — The Future of Human Memory
+          </footer>
+
+        </div>
+
       </div>
     </>
   );
