@@ -6,27 +6,44 @@ export default function Home() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ backgroundColor: "#ffffff" }}>
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-md">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <nav style={{ 
+        borderBottom: "1px solid #e5e7eb",
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
+        backdropFilter: "blur(12px)"
+      }} className="sticky top-0 z-50">
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "1rem" }} className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600">
+            <div style={{ 
+              background: "linear-gradient(135deg, #a855f7 0%, #3b82f6 100%)",
+              width: "40px",
+              height: "40px",
+              borderRadius: "8px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
               <Sparkles className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">LegacyAI</span>
+            <span style={{ fontSize: "20px", fontWeight: "bold", color: "#111827" }}>LegacyAI</span>
           </div>
-          <div className="flex gap-2 sm:gap-3">
+          <div className="flex gap-2">
             <Button
               variant="ghost"
               onClick={() => navigate("/login")}
-              className="text-gray-700 hover:bg-gray-100"
+              style={{ color: "#374151" }}
             >
               Sign In
             </Button>
             <Button 
-              onClick={() => navigate("/signup")} 
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all"
+              onClick={() => navigate("/signup")}
+              style={{
+                background: "linear-gradient(90deg, #a855f7 0%, #3b82f6 100%)",
+                color: "white",
+                fontWeight: "600",
+                boxShadow: "0 10px 25px rgba(168, 85, 247, 0.3)"
+              }}
             >
               Get Started
             </Button>
@@ -35,133 +52,361 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-white to-purple-50 py-20 sm:py-32">
+      <section style={{
+        background: "linear-gradient(180deg, #ffffff 0%, #f3e8ff 50%, #eff6ff 100%)",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+        position: "relative",
+        overflow: "hidden"
+      }}>
         {/* Decorative background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-purple-200/30 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-blue-200/30 blur-3xl" />
-        </div>
+        <div style={{
+          position: "absolute",
+          top: "-160px",
+          right: "-160px",
+          width: "320px",
+          height: "320px",
+          borderRadius: "50%",
+          background: "rgba(168, 85, 247, 0.15)",
+          filter: "blur(80px)",
+          pointerEvents: "none"
+        }} />
+        <div style={{
+          position: "absolute",
+          bottom: "-160px",
+          left: "-160px",
+          width: "320px",
+          height: "320px",
+          borderRadius: "50%",
+          background: "rgba(59, 130, 246, 0.15)",
+          filter: "blur(80px)",
+          pointerEvents: "none"
+        }} />
 
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem", position: "relative", zIndex: 10 }}>
+          <div style={{ maxWidth: "896px", margin: "0 auto", textAlign: "center" }}>
             {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-2">
-              <Sparkles className="h-4 w-4 text-purple-600" />
-              <span className="text-sm font-medium text-purple-600">Welcome to LegacyAI</span>
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              borderRadius: "9999px",
+              border: "1px solid #e9d5ff",
+              backgroundColor: "#faf5ff",
+              padding: "8px 16px",
+              marginBottom: "24px"
+            }}>
+              <Sparkles className="h-4 w-4" style={{ color: "#a855f7" }} />
+              <span style={{ fontSize: "14px", fontWeight: "500", color: "#a855f7" }}>Welcome to LegacyAI</span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="mb-6 text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-              <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 bg-clip-text text-transparent">
+            <h1 style={{
+              fontSize: "56px",
+              fontWeight: "bold",
+              lineHeight: "1.2",
+              marginBottom: "24px",
+              color: "#111827"
+            }}>
+              <span style={{
+                background: "linear-gradient(90deg, #a855f7 0%, #3b82f6 50%, #ec4899 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+              }}>
                 Preserve Your Legacy
               </span>
               <br />
-              <span className="text-gray-900">Share Memories Forever</span>
+              <span style={{ color: "#111827" }}>Share Memories Forever</span>
             </h1>
 
             {/* Subheading */}
-            <p className="mb-8 text-lg text-gray-600 sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p style={{
+              fontSize: "18px",
+              color: "#4b5563",
+              marginBottom: "32px",
+              maxWidth: "640px",
+              margin: "0 auto 32px",
+              lineHeight: "1.6"
+            }}>
               Create a beautiful digital legacy by sharing your most precious moments. 
               Connect with loved ones and preserve stories for future generations.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-4">
-              <Button
-                size="lg"
-                onClick={() => navigate("/signup")}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 text-base font-semibold h-12 px-8"
-              >
-                Start Creating <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => navigate("/login")}
-                className="border-gray-300 text-gray-900 hover:bg-gray-50 text-base font-semibold h-12 px-8"
-              >
-                Sign In
-              </Button>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", justifyContent: "center", marginBottom: "32px" }}>
+              <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>
+                <Button
+                  onClick={() => navigate("/signup")}
+                  style={{
+                    background: "linear-gradient(90deg, #a855f7 0%, #3b82f6 100%)",
+                    color: "white",
+                    fontWeight: "600",
+                    fontSize: "16px",
+                    padding: "12px 32px",
+                    boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)",
+                    border: "none",
+                    cursor: "pointer",
+                    borderRadius: "8px"
+                  }}
+                >
+                  Start Creating <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => navigate("/login")}
+                  style={{
+                    border: "1px solid #d1d5db",
+                    color: "#111827",
+                    fontWeight: "600",
+                    fontSize: "16px",
+                    padding: "12px 32px",
+                    backgroundColor: "white",
+                    cursor: "pointer",
+                    borderRadius: "8px"
+                  }}
+                >
+                  Sign In
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Grid Section */}
-      <section className="py-20 sm:py-32 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold sm:text-4xl text-gray-900">
+      <section style={{ paddingTop: "80px", paddingBottom: "80px", backgroundColor: "#ffffff" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+          <div style={{ marginBottom: "64px", textAlign: "center" }}>
+            <h2 style={{
+              fontSize: "36px",
+              fontWeight: "bold",
+              marginBottom: "16px",
+              color: "#111827"
+            }}>
               Why Choose LegacyAI?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p style={{
+              fontSize: "18px",
+              color: "#4b5563",
+              maxWidth: "640px",
+              margin: "0 auto"
+            }}>
               Everything you need to create, share, and preserve your digital legacy
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "32px"
+          }}>
             {/* Feature 1 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 group-hover:bg-purple-200 transition-colors">
-                <Heart className="h-6 w-6 text-purple-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#d8b4fe";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(168, 85, 247, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#fce7f3",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Heart className="h-6 w-6" style={{ color: "#a855f7" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Share Memories</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>Share Memories</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Post photos, stories, and moments that matter most to you. Organize memories by date and create beautiful timelines.
               </p>
             </div>
 
             {/* Feature 2 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 group-hover:bg-blue-200 transition-colors">
-                <Users className="h-6 w-6 text-blue-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#bfdbfe";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(59, 130, 246, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#dbeafe",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Users className="h-6 w-6" style={{ color: "#3b82f6" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Connect & Follow</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>Connect & Follow</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Build meaningful connections with loved ones. Follow friends and family to stay updated on their stories.
               </p>
             </div>
 
             {/* Feature 3 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-pink-100 group-hover:bg-pink-200 transition-colors">
-                <Infinity className="h-6 w-6 text-pink-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#fbcfe8";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(236, 72, 153, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#fce7f3",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Infinity className="h-6 w-6" style={{ color: "#ec4899" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Create Legacy</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>Create Legacy</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Preserve your stories forever. Create a lasting digital legacy that future generations can discover and cherish.
               </p>
             </div>
 
             {/* Feature 4 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 group-hover:bg-green-200 transition-colors">
-                <Shield className="h-6 w-6 text-green-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#bbf7d0";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(34, 197, 94, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#dcfce7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Shield className="h-6 w-6" style={{ color: "#22c55e" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Secure & Private</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>Secure & Private</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Your memories are encrypted and protected. Control who sees your content with granular privacy settings.
               </p>
             </div>
 
             {/* Feature 5 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100 group-hover:bg-yellow-200 transition-colors">
-                <Sparkles className="h-6 w-6 text-yellow-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#fef08a";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(202, 138, 4, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#fef3c7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Sparkles className="h-6 w-6" style={{ color: "#ca8a04" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">AI-Powered</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>AI-Powered</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Intelligent organization and discovery. AI helps you find and relive your favorite memories effortlessly.
               </p>
             </div>
 
             {/* Feature 6 */}
-            <div className="group rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-gray-50 p-8 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100 transition-all duration-300">
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 group-hover:bg-orange-200 transition-colors">
-                <Zap className="h-6 w-6 text-orange-600" />
+            <div style={{
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
+              padding: "32px",
+              transition: "all 0.3s ease",
+              cursor: "pointer"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#fed7aa";
+              e.currentTarget.style.boxShadow = "0 20px 25px rgba(249, 115, 22, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "8px",
+                backgroundColor: "#ffedd5",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "16px"
+              }}>
+                <Zap className="h-6 w-6" style={{ color: "#f97316" }} />
               </div>
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">Lightning Fast</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 style={{ fontSize: "20px", fontWeight: "600", color: "#111827", marginBottom: "12px" }}>Lightning Fast</h3>
+              <p style={{ color: "#4b5563", lineHeight: "1.6" }}>
                 Optimized performance for seamless browsing. Access your memories instantly, anytime, anywhere.
               </p>
             </div>
@@ -170,18 +415,44 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 py-20 sm:py-32">
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl text-white">
+      <section style={{
+        background: "linear-gradient(90deg, #a855f7 0%, #3b82f6 50%, #ec4899 100%)",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem", textAlign: "center", position: "relative", zIndex: 10 }}>
+          <h2 style={{
+            fontSize: "36px",
+            fontWeight: "bold",
+            marginBottom: "16px",
+            color: "white"
+          }}>
             Ready to Preserve Your Legacy?
           </h2>
-          <p className="mb-8 text-lg text-white/90 max-w-2xl mx-auto">
+          <p style={{
+            fontSize: "18px",
+            color: "rgba(255, 255, 255, 0.9)",
+            marginBottom: "32px",
+            maxWidth: "640px",
+            margin: "0 auto 32px"
+          }}>
             Join thousands of users creating beautiful digital legacies today
           </p>
           <Button
-            size="lg"
             onClick={() => navigate("/signup")}
-            className="bg-white text-purple-600 hover:bg-gray-100 hover:shadow-xl transition-all duration-300 text-base font-semibold h-12 px-8"
+            style={{
+              backgroundColor: "white",
+              color: "#a855f7",
+              fontWeight: "600",
+              fontSize: "16px",
+              padding: "12px 32px",
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
+              border: "none",
+              cursor: "pointer",
+              borderRadius: "8px"
+            }}
           >
             Get Started Now <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
@@ -189,46 +460,70 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-gray-50 py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+      <footer style={{
+        borderTop: "1px solid #e5e7eb",
+        backgroundColor: "#f9fafb",
+        paddingTop: "48px",
+        paddingBottom: "48px"
+      }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "32px",
+            marginBottom: "32px"
+          }}>
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 to-blue-600">
+                <div style={{
+                  width: "32px",
+                  height: "32px",
+                  borderRadius: "8px",
+                  background: "linear-gradient(135deg, #a855f7 0%, #3b82f6 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
                   <Sparkles className="h-5 w-5 text-white" />
                 </div>
-                <span className="font-semibold text-gray-900">LegacyAI</span>
+                <span style={{ fontWeight: "600", color: "#111827" }}>LegacyAI</span>
               </div>
-              <p className="text-sm text-gray-600">
+              <p style={{ fontSize: "14px", color: "#4b5563" }}>
                 Preserve your legacy, share your memories
               </p>
             </div>
             <div>
-              <h4 className="mb-4 font-semibold text-gray-900">Product</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Security</a></li>
+              <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Product</h4>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Features</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Pricing</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Security</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 font-semibold text-gray-900">Company</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-purple-600 transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Contact</a></li>
+              <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Company</h4>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>About</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Blog</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Contact</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="mb-4 font-semibold text-gray-900">Legal</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-purple-600 transition-colors">Cookies</a></li>
+              <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Legal</h4>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Privacy</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Terms</a></li>
+                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Cookies</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
+          <div style={{
+            borderTop: "1px solid #e5e7eb",
+            paddingTop: "32px",
+            textAlign: "center",
+            fontSize: "14px",
+            color: "#4b5563"
+          }}>
             <p>© 2026 LegacyAI. All rights reserved. Made with ❤️ for your memories.</p>
           </div>
         </div>
