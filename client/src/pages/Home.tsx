@@ -495,25 +495,25 @@ export default function Home() {
             <div>
               <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Product</h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Features</a></li>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Pricing</a></li>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Security</a></li>
+                <li><a href="/features" onClick={(e) => { e.preventDefault(); navigate("/features"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Features</a></li>
+                <li><a href="/pricing" onClick={(e) => { e.preventDefault(); navigate("/pricing"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Pricing</a></li>
+                <li><a href="/security" onClick={(e) => { e.preventDefault(); navigate("/security"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Security</a></li>
               </ul>
             </div>
             <div>
               <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Company</h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>About</a></li>
+                <li><a href="/about" onClick={(e) => { e.preventDefault(); navigate("/about"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>About</a></li>
+                <li><a href="/contact" onClick={(e) => { e.preventDefault(); navigate("/contact"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Contact</a></li>
                 <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Blog</a></li>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Contact</a></li>
               </ul>
             </div>
             <div>
               <h4 style={{ marginBottom: "16px", fontWeight: "600", color: "#111827" }}>Legal</h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Privacy</a></li>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Terms</a></li>
-                <li><a href="#" style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none" }}>Cookies</a></li>
+                <li><a href="/privacy" onClick={(e) => { e.preventDefault(); navigate("/privacy"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Privacy</a></li>
+                <li><a href="/terms" onClick={(e) => { e.preventDefault(); navigate("/terms"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Terms</a></li>
+                <li><a href="/cookies" onClick={(e) => { e.preventDefault(); navigate("/cookies"); }} style={{ fontSize: "14px", color: "#4b5563", textDecoration: "none", cursor: "pointer" }}>Cookies</a></li>
               </ul>
             </div>
           </div>

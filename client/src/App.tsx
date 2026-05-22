@@ -19,6 +19,14 @@ import MemoryTimeline from "./pages/MemoryTimeline";
 import FollowersList from "./pages/FollowersList";
 import FollowingList from "./pages/FollowingList";
 import MemoryDetail from "./pages/MemoryDetail";
+import Features from "./pages/Features";
+import Pricing from "./pages/Pricing";
+import Security from "./pages/Security";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Cookies from "./pages/Cookies";
 import { useAuth } from "./_core/hooks/useAuth";
 import { Spinner } from "./components/ui/spinner";
 
@@ -73,6 +81,14 @@ function Router() {
       <Route path="/profile/:userId/followers" component={FollowersList} />
       <Route path="/profile/:userId/following" component={FollowingList} />
       <Route path="/memory/:postId" component={MemoryDetail} />
+      <Route path="/features" component={Features} />
+      <Route path="/pricing" component={Pricing} />
+      <Route path="/security" component={Security} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/cookies" component={Cookies} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
